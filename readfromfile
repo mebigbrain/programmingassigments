@@ -13,7 +13,7 @@ int main() {
 	int x;
 	ifstream inFile; // Variable declaration
 
-	inFile.open("C:\\Users\abrou\source\repos\proj2_2\proj2_2"); // reads from file
+	inFile.open("C:\\Users\\abrou\\source\\repos\\proj2_2\\proj2_2"); // reads from file
 
 	if (!inFile)
 	{
