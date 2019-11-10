@@ -1,0 +1,59 @@
+#include <iostream>
+
+#include <fstream>
+
+using namespace std;
+
+int main() {
+
+	int posCount = 0;
+	int posSum = 0;
+	int negCount = 0;
+	int negSum = 0;
+	int x;
+	ifstream inFile; // Variable declaration
+
+	inFile.open("C:\\Users\abrou\source\repos\proj2_2\proj2_2"); // reads from file
+
+	if (!inFile)
+	{
+		cout << "Unable to open file";
+		exit(1);
+	}
+
+	cout << "/nProcessing file -- please wait" << endl;
+
+	while (inFile >> x) { // calculations
+
+		if (x < 0)
+
+		{
+
+			negCount++;
+
+			negSum += x;
+		}
+
+		else
+
+		{
+
+			posCount++;
+
+			posSum += x;
+
+		}
+
+	}
+	inFile.close();
+	cout << "Negative count: " << negCount << endl; // Displays values
+
+	cout << "Negative sum: " << negSum << endl;
+
+	cout << "Positive count: " << posCount << endl;
+
+	cout << "Positive sum: " << posSum << endl;
+
+	return 0;
+
+}
