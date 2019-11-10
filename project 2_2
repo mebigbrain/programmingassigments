@@ -1,0 +1,47 @@
+#include <iostream>
+
+#include <fstream>
+
+using namespace std;
+
+int main() {
+
+	int num, pcount = 0, psum = 0, nsum = 0, ncount = 0; // Variable declaration
+
+	fstream fin("Numbers.txt", fstream::in); // reads from file
+
+	while (fin >> num) { // calculations
+
+		if (num < 0)
+
+		{
+
+			ncount++;
+
+			nsum += num;
+
+		}
+
+		else
+
+		{
+
+			pcount++;
+
+			psum += num;
+
+		}
+
+	}
+
+	cout << "Negative count: " << ncount << endl; // Displays values
+
+	cout << "Negative sum: " << nsum << endl;
+
+	cout << "Positive count: " << pcount << endl;
+
+	cout << "Positive sum: " << psum << endl;
+
+	return 0;
+
+}
