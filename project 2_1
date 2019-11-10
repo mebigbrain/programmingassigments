@@ -1,0 +1,58 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+	double weight, distance; // Variable declaration
+	double total_charge = 0;
+
+	cout << "Welcome to Adam's Shipping Company!" << endl;
+	cout << "Please enter the weight in pounds of your package: ";
+	cin >> weight;
+
+	if (weight > 20) // if statements preventing unwanted values
+	{
+		cout << "weight over 20 pounds are NOT ALLOWED";
+		return 0;
+	}
+	else if (weight < 0)
+	{
+		cout << "negative weights are NOT ALLOWED";
+		return 0;
+	}
+
+	cout << "Please enter the distance in miles to be shipped: ";
+	cin >> distance;
+	if (distance > 500)
+	{
+		cout << "Distance over 500 miles NOT ALLOWED";
+		return 0;
+	}
+	else if (distance < 0)
+	{
+		cout << "Negative distances are NOT ALLOWED";
+		return 0;
+	}
+	
+	if (weight > 0 && weight <= 10) // Calculations
+		total_charge += (weight * 0.75);
+	else if (weight > 10 && weight <= 15)
+		total_charge += (weight * 0.85);
+	else if (weight > 15 && weight <= 20)
+		total_charge += (weight * 0.95);
+
+	if (distance > 0 && distance <= 50)
+		total_charge += (distance * 0.07);
+	else if (distance > 50 && distance <= 100)
+		total_charge += (distance * 0.06);
+	else if (distance > 100 && distance <= 200)
+		total_charge += (distance * 0.05);
+	else if (distance > 200 && distance <= 500)
+		total_charge += (distance * 0.04);
+
+	total_charge = ceil(total_charge * 100) / 100;
+
+	cout << "Your total charge is $" << total_charge;
+	return 0;
+}
