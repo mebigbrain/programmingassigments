@@ -1,0 +1,43 @@
+#include <iostream>
+#include <string>
+#include <fstream>
+
+using namespace std;
+
+int main() {
+	//Open input file to read text
+	ifstream inputFile("C:\\Users\\abrou\\source\\repos\\input.txt");
+
+	//Check if input file opened successfully or not
+	if (!inputFile) {
+		cout << "Cannot open file" << endl;
+		exit(EXIT_FAILURE);
+	}
+
+	//To read a character from file
+	char next;
+	//Open output file to write output
+	ofstream outputFile("C:\\Users\\abrou\\source\\repos\\proj5_3\\input.txt");
+
+	//Read a character from file in variable next
+	inputFile.get(next);
+	//Keep reading from input file till end of file is not reached
+	while (!inputFile.eof()) {
+		//If next is 'C' then instead of writing
+		//'C' to output file write "C++"
+		if (next == 'C') {
+			outputFile << "C++";
+		}
+		//Otherwise just write the character as it is to output file
+		else {
+			outputFile << next;
+		}
+		//Read a character from file in variable next
+		inputFile.get(next);
+	}
+
+	//Close files
+	inputFile.close();
+	outputFile.close();
+	return 0;
+}
