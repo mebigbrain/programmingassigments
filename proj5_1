@@ -1,0 +1,59 @@
+#include<iostream>
+
+using namespace std;
+
+class DivSales
+{
+public:
+	// Static variable to hold total sales value
+	static float total_sales;
+
+	// Array to hold quarterly sales values
+	float quarterly_sales[4];
+
+	// Member function to update the quarterly sales values
+	void sales_update(float q0, float q1, float q2, float q3)
+	{
+		quarterly_sales[0] = q0;
+		quarterly_sales[1] = q1;
+		quarterly_sales[2] = q2;
+		quarterly_sales[3] = q3;
+
+		// The total sales values are added to the static variable
+		for (int i = 0; i < 4; i++)
+			total_sales += quarterly_sales[i];
+
+	}
+
+	// Member function to extract the quarterly sales value of the specified quarter
+	float sales(int quarter)
+	{
+		return quarterly_sales[quarter];
+	}
+
+};
+float DivSales::total_sales = 0;
+
+int main()
+{
+	// Creating 6 objects of the DivSales class for the 6 divisions
+	DivSales division[6];
+	float q0, q1, q2, q3;
+
+	// Initializing the 6 objects
+	for (int i = 0; i < 6; i++)
+	{
+		cout << "Enter the sales for 4 quarters in division " << i + 1 << " : ";
+		cin >> q0 >> q1 >> q2 >> q3;;
+		division[i].sales_update(q0, q1, q2, q3);
+	}
+
+	// Displaying the table
+	cout << "Division\tQuarter 0\tQuarter 1\tQuarter 2\tQuarter 3\n";
+
+	for (int i = 0; i < 6; i++)
+		cout << i + 1 << "\t\t" << division[i].quarterly_sales[0] << "\t\t" << division[i].quarterly_sales[1] << "\t\t" << division[i].quarterly_sales[2] << "\t\t" << division[i].quarterly_sales[3] << endl;
+
+	cout << "The total corporate sales for the year is " << DivSales::total_sales << endl;
+
+}
